@@ -18,6 +18,5 @@
 	"dependencies": {
 		"nw": "^0.30.0",
 		"request": "^2.85.0"
-	},
-	"chromium-args": "--enable-logging=stderr"
+	}
 }

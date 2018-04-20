@@ -1,6 +1,6 @@
 const Request = require("request");
-const Url = "https://raw.githubusercontent.com/iantonini/MyAppNodeNW/master/exemplo.html";
-// const Url = "https://private-7cf60-4youseesocialtest.apiary-mock.com/timeline";
+// const Url = "https://raw.githubusercontent.com/iantonini/MyAppNodeNW/master/exemplo.html";
+const Url = "https://private-7cf60-4youseesocialtest.apiary-mock.com/timeline";
 
 Request.get(Url, (error, response, body) => {
 	if(error || response.statusCode != 200){
@@ -12,7 +12,43 @@ Request.get(Url, (error, response, body) => {
 
     for(var i=0; i < Jresponse.length; i++){
     	
-    	var html = '<p><image class="col-md-3" src="' + Jresponse[i].thumbnail + '"/></p>';
+    	// Filtro de Categorias
+		var filtro_categoria = '<a class="dropdown-item" href="#category_' + Jresponse[i].category + '">' + Jresponse[i].category + '</a>';
+		$('#category').append(filtro_categoria);
+
+		// Filtro de Tipos de Mídia
+		var filtro_tipo_midia = '<a class="dropdown-item" href="#type_' + Jresponse[i].type + '">' + Jresponse[i].type + '</a>';
+		$('#type').append(filtro_tipo_midia);
+
+		// Conteudo da API
+		var html = '<div class="jumbotron">\
+						<div class="row col-md-12">\
+							<div class="col-md-12">\
+								Category: ' + Jresponse[i].category + '\
+							</div>\
+						</div>\
+						<div class="row col-md-12">\
+							<div class="row col-md-12">\
+								<div class="col-md-5">\
+									<image class="col-md-12" src="' + Jresponse[i].thumbnail + '"/>\
+								</div>\
+								<div class="col-md-7">\
+									<div class="col-md-12">\
+										<h6>Title:</h6> ' + Jresponse[i].title + '\
+									</div>\
+									<div class="col-md-12">\
+										<h6>Type:</h6> ' + Jresponse[i].type + '\
+									</div>\
+									<div class="col-md-12">\
+										<h6>Description:</h6> ' + Jresponse[i].description + '\
+									</div>\
+									<div class="col-md-12">\
+										<h6>File:</h6> ' + Jresponse[i].file + '\
+									</div>\
+								</div>\
+							</div>\
+						</div>\
+					</div>';
 		$('#json').append(html);
     }
 });
