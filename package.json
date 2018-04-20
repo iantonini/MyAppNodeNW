@@ -1,0 +1,23 @@
+{
+	"name": "MyApp",
+	"main": "index.html",
+	"version": "1.0.0",
+	"window": {
+		"title": "MyApp",
+		"toolbar": false,
+		"icon": "static/images/icone.png",
+		"position": "center",
+		"width": 800,
+		"height": 600,
+		"frame": true,
+		"show": true,
+		"kiosk": false,
+		"fullscreen": false,
+		"resizable": true
+	},
+	"dependencies": {
+		"nw": "^0.30.0",
+		"request": "^2.85.0"
+	},
+	"chromium-args": "--enable-logging=stderr"
+}
