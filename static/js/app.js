@@ -1,6 +1,17 @@
 const Request = require("request");
-// const Url = "https://raw.githubusercontent.com/iantonini/MyAppNodeNW/master/exemplo.html";
-const Url = "https://private-7cf60-4youseesocialtest.apiary-mock.com/timeline";
+const Url = "https://raw.githubusercontent.com/iantonini/MyAppNodeNW/master/exemplo.html";
+// const Url = "https://private-7cf60-4youseesocialtest.apiary-mock.com/timeline";
+
+
+// Iniciando Filtros
+var Filtros = [];
+var Query = '';
+var query = location.search;
+var partes = query.split('&');
+partes.forEach(function(parte){
+    query = parte.split('=');
+    Query = query[1];
+});
 
 Request.get(Url, (error, response, body) => {
 	if(error || response.statusCode != 200){
@@ -11,14 +22,20 @@ Request.get(Url, (error, response, body) => {
     var Jresponse = JSON.parse(body);
 
     for(var i=0; i < Jresponse.length; i++){
-    	
-    	// Filtro de Categorias
-		var filtro_categoria = '<a class="dropdown-item" href="#category_' + Jresponse[i].category + '">' + Jresponse[i].category + '</a>';
-		$('#category').append(filtro_categoria);
+
+		// Filtro de Categorias
+    	if(Filtros.indexOf('category_' + Jresponse[i].category) === -1){
+    		Filtros.push('category_' + Jresponse[i].category);
+    		var filtro_categoria = '<a class="dropdown-item" href="./index.html?search=category_' + Jresponse[i].category + '">' + Jresponse[i].category + '</a>';
+    		$('#category').append(filtro_categoria);
+    	}
 
 		// Filtro de Tipos de Mídia
-		var filtro_tipo_midia = '<a class="dropdown-item" href="#type_' + Jresponse[i].type + '">' + Jresponse[i].type + '</a>';
-		$('#type').append(filtro_tipo_midia);
+		if(Filtros.indexOf('type_' + Jresponse[i].type) === -1){
+			Filtros.push('type_' + Jresponse[i].type);
+			var filtro_tipo_midia = '<a class="dropdown-item" href="./index.html?search=type_' + Jresponse[i].type + '">' + Jresponse[i].type + '</a>';
+			$('#type').append(filtro_tipo_midia);
+		}
 
 		// Conteudo da API
 		var html = '<div class="jumbotron">\
@@ -49,6 +66,12 @@ Request.get(Url, (error, response, body) => {
 							</div>\
 						</div>\
 					</div>';
+
+		if(Query != '' && Query != 'all' && Query != undefined){
+			if(Query != 'category_' + Jresponse[i].category && Query != 'type_' + Jresponse[i].type){
+				continue;
+			}
+		}
 		$('#json').append(html);
     }
 });
