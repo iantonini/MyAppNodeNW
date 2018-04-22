@@ -1,7 +1,7 @@
 const Request = require("request");
 const Url = "https://raw.githubusercontent.com/iantonini/MyAppNodeNW/master/exemplo.html";
 // const Url = "https://private-7cf60-4youseesocialtest.apiary-mock.com/timeline";
-
+body
 
 // Iniciando Filtros
 var Filtros = [];
@@ -37,7 +37,7 @@ Request.get(Url, (error, response, body) => {
 			$('#type').append(filtro_tipo_midia);
 		}
 
-		// Conteudo da API
+		// Conteudo da APIbody
 		var html = '<div class="jumbotron">\
 						<div class="row col-md-12">\
 							<div class="col-md-12">\
