@@ -59,8 +59,10 @@
         OSX64
         - node_modules/.bin/nwbuild -posx64 .
 
-    Gerar arquivo executavel
-    - cat `which nw` app.nw > app && chmod +x app 
+    Acessar pasta com os executaveis de acordo com a plataforma desejada.
+    - cd build/MyAppNodeNW/[Linux32,Linux64,Win32,Win64,OSX32,OSX64]
+
+    Dentro da pasta da plataforma escolhida tem o arquivo executavel com o nome da aplicação.
 
 
 ## Links Referências
