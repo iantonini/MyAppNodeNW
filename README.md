@@ -1,10 +1,16 @@
 # MyAppNodeNW
 
-  Aplicativo desenvolvido utilizando NodeJS + NW.js.
-  A Aplicação busca as imagens de uma API que retorna as informações em Json e apresenta as informações na tela do APP.
+  <img src="./static/images/MyAppNW.png" />
+  Aplicativo desenvolvido utilizando NodeJS + biblioteca 'nw.js'.
 
+  ### Funcionalidade
+  Buscar conteudo na URL especificada (API) e apresentar essas informações para o usuário.
 
-## Configurar Ambiente
+  ### URL API
+  Exemplo para testes (conteudo JSON):
+   - URL = https://raw.githubusercontent.com/iantonini/MyAppNodeNW/master/exemplo.html
+
+## Configurar Ambiente (Usando Linux Debian/Ubuntu)
 
   ### Instalar NodeJS + NWjs + Dependencias
     - sudo apt-get install python-software-properties 
@@ -29,14 +35,14 @@
     Instalar dependências do NodeJS
     - npm i --production
 
-  ### Executar Aplicativo
+  ### Executar Aplicativo (sem complilar)
     Acessar o diretório do aplicativo
     - cd MyAppNodeNW
 
     Executar NW para iniciar APP
     - node_modulo/.bin/nw . 
 
-  ### Complilar Aplicativo (Linux)
+  ### Complilar Aplicativo (Linux32, Linux64, Win32, Win64, OSX32, OSX64)
     Acessar o diretório do aplicativo
     - cd MyAppNodeNW
 
