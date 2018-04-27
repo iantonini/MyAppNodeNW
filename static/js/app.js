@@ -1,6 +1,5 @@
 const Request = require("request");
-//const Url = "https://raw.githubusercontent.com/iantonini/MyAppNodeNW/master/exemplo.html";
-const Url = "https://private-7cf60-4youseesocialtest.apiary-mock.com/timeline";
+const Url = "https://raw.githubusercontent.com/iantonini/MyAppNodeNW/master/exemplo.html";
 
 // Iniciando Filtros
 var Filtros = [];
